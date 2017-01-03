@@ -2,8 +2,10 @@
 server/*
 
 # except the important ones
+!server/plugins
+server/plugins/*
+!server/plugins/spellcastr-0.0.1-jar-with-dependencies.jar
+!server/plugins/spellcastr-0.0.1.jar
 !server/server.properties
 !server/*.yml
 !server/spigot-1.11.2.jar
-!server/plugins/spellcastr-0.0.1-jar-with-dependencies.jar
-!server/plugins/spellcastr-0.0.1.jar
