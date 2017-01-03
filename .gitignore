@@ -5,4 +5,4 @@ server/*
 !server/server.properties
 !server/*.yml
 !server/spigot-1.11.2.jar
-!server/plugins/*
+!server/plugins
