@@ -8,4 +8,5 @@ server/plugins/*
 !server/plugins/spellcastr-0.0.1.jar
 !server/server.properties
 !server/*.yml
+!server/README.md
 !server/spigot-1.11.2.jar
