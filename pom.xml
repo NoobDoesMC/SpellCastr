@@ -10,6 +10,7 @@
 
   <build>
     <defaultGoal>install</defaultGoal>
+    <directory>${basedir}/server/plugins</directory>
 
     <plugins>
       <plugin>
