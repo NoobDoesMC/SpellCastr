@@ -1,0 +1,8 @@
+# ignore all superfluous server files
+server/*
+
+# except the important ones
+!server/server.properties
+!server/*.yml
+!server/spigot-1.11.2.jar
+!server/plugins/*
