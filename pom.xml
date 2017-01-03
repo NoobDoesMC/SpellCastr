@@ -53,11 +53,14 @@
   <url>https://github.com/theonlygusti/SpellCastr/</url>
   <inceptionYear>2017</inceptionYear>
 
-  <!-- get spigot, bukkit and craftbukkit API's -->
   <repositories>
     <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+    <repository>
+      <id>jcenter</id>
+      <url>https://jcenter.bintray.com/</url>
     </repository>
   </repositories>
 
@@ -79,6 +82,13 @@
       <artifactId>craftbukkit</artifactId>
       <version>1.11.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
+    </dependency>
+
+    <!-- from the jcenter repository, jcommander is used to parse in-game commands -->
+    <dependency>
+      <groupId>com.beust</groupId>
+      <artifactId>jcommander</artifactId>
+      <version>1.48</version>
     </dependency>
   </dependencies>
 </project>
