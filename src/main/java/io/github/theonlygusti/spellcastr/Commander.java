@@ -16,15 +16,26 @@
  */
 package io.github.theonlygusti.spellcastr;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.JCommander;
 
 public class Commander implements CommandExecutor {
   private final Plugin plugin;
 
   public Commander(Plugin plugin) {
     this.plugin = plugin;
+  }
+
+  private class CommandTemplate {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
   }
 
   @Override
