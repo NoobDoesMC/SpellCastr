@@ -44,7 +44,7 @@ public class Commander implements CommandExecutor {
     new JCommander(template, args);
 
     for (String parameter : template.parameters)
-      sender.sendMessage(label);
+      sender.sendMessage(parameter);
     return true;
   }
 }
