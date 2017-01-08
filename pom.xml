@@ -16,7 +16,7 @@
     <defaultGoal>install</defaultGoal>
     <!-- by outputting binaries straight to /server/plugin we can test
          the plugin without having to move them ourselves -->
-    <directory>${basedir}/server/plugins</directory>
+    <directory>${basedir}/testing-server/plugins</directory>
 
     <plugins>
       <plugin>
