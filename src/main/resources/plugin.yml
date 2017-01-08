@@ -3,3 +3,9 @@ version: 0.0.1
 description: Provides an API for server ops to add spells which players can use in-game.
 author: theonlygusti <https://github.com/theonlygusti/>
 main: io.github.theonlygusti.spellcastr.Plugin
+commands:
+  spellcastr:
+    description: Top-level command for interacting with the SpellCastr plugin.
+    permission: SpellCastr.spellcastr
+    usage: /<command> help
+    aliases: [sc, scr]
