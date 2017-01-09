@@ -1,2 +1,3 @@
 # ignore all superfluous server files
 testing-server/*
+testing-server
