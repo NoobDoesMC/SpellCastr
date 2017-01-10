@@ -19,7 +19,7 @@ package io.github.theonlygusti.spellcastr;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Plugin extends JavaPlugin {
-  public final configuration;
+  public Configuration configuration;
 
   @Override
   public void onEnable() {
