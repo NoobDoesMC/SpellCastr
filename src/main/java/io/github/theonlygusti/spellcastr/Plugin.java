@@ -19,9 +19,13 @@ package io.github.theonlygusti.spellcastr;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Plugin extends JavaPlugin {
+  public final configuration;
+
   @Override
   public void onEnable() {
     getLogger().info("Enabled.");
     this.getCommand("spellcastr").setExecutor(new Commander(this));
+    this.configuration = new Configuration(this);
+    this.configuration.loadDefaults();
   }
 }
