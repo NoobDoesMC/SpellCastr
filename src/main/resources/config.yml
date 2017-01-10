@@ -1,2 +1,36 @@
 item:
+  woodenwand:
+    name: "Wooden Wand"
+    crafting:
+      - ["wooden_stick", "air", "air"]
+      - ["air", "wooden_stick", "air"]
+      - ["air", "air", "wooden_stick"]
+    binds:
+      - "fireball"
+      - "speed"
+      - "longshot"
 spell:
+  fireball:
+    name: "Fireball"
+    description: "Launch a mighty meteor which erupts in a powerful blast upon impact."
+    type:
+      id: "projectile"
+      entity:
+        id: "fireball"
+      area-of-effect: 10
+  speed:
+    name: "Speed"
+    description: "Warp space around yourself as you run to double your normal speed!"
+    type:
+      id: "effect"
+      name: "speed"
+      level: 5
+      duration: 60
+  longshot:
+    name: "Long Shot"
+    description: "Let loose a powerful spectral arrow which gains energy as it flies."
+    type:
+      id: "projectile"
+      entity:
+        id: "arrow"
+      area-of-effect: 0
