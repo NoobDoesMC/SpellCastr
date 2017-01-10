@@ -22,4 +22,8 @@ class Configuration {
   public Configuration(Plugin plugin) {
     this.plugin = plugin;
   }
+
+  public loadDefaults() {
+    this.plugin.saveDefaultConfig();
+  }
 }
