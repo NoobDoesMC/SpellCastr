@@ -23,7 +23,7 @@ class Configuration {
     this.plugin = plugin;
   }
 
-  public loadDefaults() {
+  public void loadDefaults() {
     this.plugin.saveDefaultConfig();
   }
 }
