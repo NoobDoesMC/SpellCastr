@@ -17,7 +17,9 @@
 package io.github.theonlygusti.spellcastr;
 
 class Configuration {
-  private Plugin plugin;
-  public Configuration() {
+  private final Plugin plugin;
+
+  public Configuration(Plugin plugin) {
+    this.plugin = plugin;
   }
 }
