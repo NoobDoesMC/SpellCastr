@@ -26,4 +26,8 @@ class Configuration {
   public void loadDefaults() {
     this.plugin.saveDefaultConfig();
   }
+
+  public void setProperty(String key, Object value) {
+    this.plugin.getConfig().set(key, value);
+  }
 }
