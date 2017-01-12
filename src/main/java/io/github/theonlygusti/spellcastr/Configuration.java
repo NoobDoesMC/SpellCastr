@@ -30,4 +30,8 @@ class Configuration {
   public void setProperty(String key, Object value) {
     this.plugin.getConfig().set(key, value);
   }
+
+  public Object getProperty(String key) {
+    return this.plugin.getConfig().get(key);
+  }
 }
