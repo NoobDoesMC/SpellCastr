@@ -36,12 +36,18 @@ public class Commander implements CommandExecutor {
   private class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
+
+    @Parameter(names = "help", help = true)
+    private boolean help;
   }
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     CommandTemplate template = new CommandTemplate();
-    new JCommander(template, args);
+    JCommander jcommander = new JCommander(template);
+    jcommander.setProgramName("spellcastr");
+
+    jcommander.parse(args);
 
     for (String parameter : template.parameters)
       sender.sendMessage(parameter);
