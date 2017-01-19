@@ -49,6 +49,12 @@ public class Commander implements CommandExecutor {
 
     jcommander.parse(args);
 
+    if (template.help) {
+      StringBuilder help = new StringBuilder();
+      jcommander.usage(help);
+      sender.sendMessage(help.toString());
+    }
+
     for (String parameter : template.parameters)
       sender.sendMessage(parameter);
     return true;
