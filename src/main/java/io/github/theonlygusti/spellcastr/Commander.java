@@ -23,9 +23,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.beust.jcommander.Parameter;
-import com.beust.jcommander.JCommander;
-
 public class Commander implements CommandExecutor {
   private final Plugin plugin;
 
@@ -33,30 +30,8 @@ public class Commander implements CommandExecutor {
     this.plugin = plugin;
   }
 
-  private class CommandTemplate {
-    @Parameter
-    private List<String> parameters = new ArrayList<>();
-
-    @Parameter(names = "help", help = true)
-    private boolean help;
-  }
-
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    CommandTemplate template = new CommandTemplate();
-    JCommander jcommander = new JCommander(template);
-    jcommander.setProgramName("spellcastr");
-
-    jcommander.parse(args);
-
-    if (template.help) {
-      StringBuilder help = new StringBuilder();
-      jcommander.usage(help);
-      sender.sendMessage(help.toString());
-    }
-
-    for (String parameter : template.parameters)
-      sender.sendMessage(parameter);
     return true;
   }
 }
