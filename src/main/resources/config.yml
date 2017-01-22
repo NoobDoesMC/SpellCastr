@@ -1,22 +1,22 @@
-item:
+items:
   mjolnir:
-    name: "Mjølnir"
+    name: Mjølnir
     item:
-      id: "iron_shovel"
+      id: iron_shovel
     crafting:
-      - ["iron_block", "iron_ingot", "iron_block"]
-      - ["air", "wooden_stick", "air"]
-      - ["air", "wooden_stick", "air"]
+      - [iron_block, iron_ingot, iron_block]
+      - [air, wooden_stick, air]
+      - [air, wooden_stick, air]
     binds:
-      - "lightning"
-spell:
+      - lightning
+spells:
   lightning:
-    display: "LIGHTNING STRIKE"
+    display: LIGHTNING STRIKE
     scripts:
-      - script: "summon_at_target"
+      - script: summon_at_target
         options:
           entities:
-            - id: "lightning_strike"
+            - id: lightning_strike
           damage:
             amount: 10
             areaOfEffect: 2
