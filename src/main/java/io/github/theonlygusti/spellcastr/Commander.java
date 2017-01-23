@@ -16,8 +16,9 @@
  */
 package io.github.theonlygusti.spellcastr;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,7 +33,11 @@ public class Commander implements CommandExecutor {
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    plugin.configuration.setProperty(args[0], args[1]);
+    if (args.length == 1) {
+      sender.sendMessage(plugin.configuration.getProperty(args[0]).toString());
+    } else {
+      plugin.configuration.setProperty(args[0], String.join(" ", Arrays.copyOfRange(args, 1, args.length)));
+    }
     return true;
   }
 }
