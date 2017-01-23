@@ -29,6 +29,7 @@ class Configuration {
 
   public void setProperty(String key, Object value) {
     this.plugin.getConfig().set(key, value);
+    this.plugin.saveConfig();
   }
 
   public Object getProperty(String key) {

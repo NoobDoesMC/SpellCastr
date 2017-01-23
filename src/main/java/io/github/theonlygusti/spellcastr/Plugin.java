@@ -24,8 +24,8 @@ public final class Plugin extends JavaPlugin {
   @Override
   public void onEnable() {
     getLogger().info("Enabled.");
-    this.getCommand("spellcastr").setExecutor(new Commander(this));
     this.configuration = new Configuration(this);
     this.configuration.loadDefaults();
+    this.getCommand("spellcastr").setExecutor(new Commander(this));
   }
 }

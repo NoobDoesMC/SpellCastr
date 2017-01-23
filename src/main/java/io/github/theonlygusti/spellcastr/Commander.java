@@ -32,6 +32,7 @@ public class Commander implements CommandExecutor {
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    plugin.configuration.setProperty(args[0], args[1]);
     return true;
   }
 }
