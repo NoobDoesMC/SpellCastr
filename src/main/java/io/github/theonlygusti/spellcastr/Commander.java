@@ -33,11 +33,6 @@ public class Commander implements CommandExecutor {
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (args.length == 1) {
-      sender.sendMessage(plugin.configuration.getProperty(args[0]).toString());
-    } else {
-      plugin.configuration.setProperty(args[0], String.join(" ", Arrays.copyOfRange(args, 1, args.length)));
-    }
     return true;
   }
 }
