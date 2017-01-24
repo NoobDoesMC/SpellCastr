@@ -1,6 +1,6 @@
 items:
   mjolnir:
-    name: Mjølnir
+    display: Mjølnir
     item:
       id: iron_shovel
     crafting:
