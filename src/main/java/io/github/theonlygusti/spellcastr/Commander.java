@@ -34,12 +34,15 @@ public class Commander implements CommandExecutor {
     this.plugin = plugin;
   }
 
+  @Parameters(commandDescription = "Bind a spell to an item.")
+  private class CommandBind {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
   private class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
-
-    @Parameter(names = "help", help = true)
-    private boolean help;
   }
 
   @Override
@@ -48,16 +51,10 @@ public class Commander implements CommandExecutor {
     JCommander jcommander = new JCommander(template);
     jcommander.setProgramName("spellcastr");
 
-    jcommander.parse(args);
+    CommandBind bind = new CommandBind();
+    jcommander.add("bind", bind);
 
-    if (template.help) {
-      StringBuilder help = new StringBuilder();
-      jcommander.usage(help);
-      sender.sendMessage(help.toString());
-    } else {
-      for (String parameter : template.parameters)
-        sender.sendMessage(parameter);
-    }
+    jcommander.parse(args);
 
     return true;
   }
