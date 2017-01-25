@@ -26,6 +26,7 @@ import org.bukkit.command.CommandSender;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
 
 public class Commander implements CommandExecutor {
   private final Plugin plugin;
@@ -52,9 +53,15 @@ public class Commander implements CommandExecutor {
     jcommander.setProgramName("spellcastr");
 
     CommandBind bind = new CommandBind();
-    jcommander.add("bind", bind);
+    jcommander.addCommand("bind", bind);
 
-    jcommander.parse(args);
+    try {
+      jcommander.parse(args);
+    } catch(Exception exception) {
+      StringBuilder help = new StringBuilder();
+      jcommander.usage(help);
+      sender.sendMessage(help.toString());
+    }
 
     return true;
   }
