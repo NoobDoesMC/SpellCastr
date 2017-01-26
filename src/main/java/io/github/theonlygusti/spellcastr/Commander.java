@@ -47,6 +47,12 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
+  @Parameters(commandDescription = "Set a description for a spell or item.")
+  private class CommandSetLore {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
   private class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
@@ -62,6 +68,8 @@ public class Commander implements CommandExecutor {
     jcommander.addCommand("bind", bind);
     CommandCreate create = new CommandCreate();
     jcommander.addCommand("create", create);
+    CommandSetLore setLore = new CommandSetLore();
+    jcommander.addCommand("setlore", setLore);
 
     try {
       jcommander.parse(args);
