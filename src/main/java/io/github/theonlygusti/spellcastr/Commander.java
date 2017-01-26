@@ -41,6 +41,12 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
+  @Parameters(commandDescription = "Create a new spell or item.")
+  private class CommandCreate {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
   private class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
@@ -54,6 +60,8 @@ public class Commander implements CommandExecutor {
 
     CommandBind bind = new CommandBind();
     jcommander.addCommand("bind", bind);
+    CommandCreate create = new CommandCreate();
+    jcommander.addCommand("create", create);
 
     try {
       jcommander.parse(args);
