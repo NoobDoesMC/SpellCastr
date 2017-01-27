@@ -53,6 +53,12 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
+  @Parameters(commandDescription = "Set the ")
+  private class CommandSetLore {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
   private class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
