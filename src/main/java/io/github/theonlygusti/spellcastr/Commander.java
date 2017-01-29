@@ -31,10 +31,6 @@ import com.beust.jcommander.Parameters;
 public class Commander implements CommandExecutor {
   private final Plugin plugin;
 
-  private JCommander jcommander;
-  private CommandTemplate template;
-
-
   @Parameters(commandDescription = "Bind a spell to an item.")
   private class CommandBind {
     @Parameter
@@ -63,6 +59,9 @@ public class Commander implements CommandExecutor {
     @Parameter
     private List<String> parameters = new ArrayList<>();
   }
+
+  private JCommander jcommander;
+  private CommandTemplate template;
 
   public String help() {
     StringBuilder help = new StringBuilder();
