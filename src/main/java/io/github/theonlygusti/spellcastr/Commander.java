@@ -31,7 +31,20 @@ import com.beust.jcommander.Parameters;
 public class Commander implements CommandExecutor {
   private final Plugin plugin;
 
+  private JCommander jcommander;
+  private CommandTemplate template;
+
   public Commander(Plugin plugin) {
+    template = new CommandTemplate();
+    jcommander = new JCommander(template);
+    jcommander.setProgramName("spellcastr");
+    CommandBind bind = new CommandBind();
+    jcommander.addCommand("bind", bind);
+    CommandCreate create = new CommandCreate();
+    jcommander.addCommand("create", create);
+    CommandSetLore setLore = new CommandSetLore();
+    jcommander.addCommand("setlore", setLore);
+
     this.plugin = plugin;
   }
 
@@ -64,19 +77,14 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
+  public String help() {
+    StringBuilder help = new StringBuilder();
+    jcommander.usage(help);
+    sender.sendMessage(help.toString());
+  }
+
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    CommandTemplate template = new CommandTemplate();
-    JCommander jcommander = new JCommander(template);
-    jcommander.setProgramName("spellcastr");
-
-    CommandBind bind = new CommandBind();
-    jcommander.addCommand("bind", bind);
-    CommandCreate create = new CommandCreate();
-    jcommander.addCommand("create", create);
-    CommandSetLore setLore = new CommandSetLore();
-    jcommander.addCommand("setlore", setLore);
-
     try {
       jcommander.parse(args);
     } catch(Exception exception) {
