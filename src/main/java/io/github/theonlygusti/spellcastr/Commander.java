@@ -49,13 +49,7 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
-  @Parameters(commandDescription = "Set the description for the item or spell.")
-  private class CommandSetLore {
-    @Parameter
-    private List<String> parameters = new ArrayList<>();
-  }
-
-  private class CommandTemplate {
+  private static class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
   }
