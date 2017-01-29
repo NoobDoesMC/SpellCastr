@@ -34,19 +34,6 @@ public class Commander implements CommandExecutor {
   private JCommander jcommander;
   private CommandTemplate template;
 
-  public Commander(Plugin plugin) {
-    template = new CommandTemplate();
-    jcommander = new JCommander(template);
-    jcommander.setProgramName("spellcastr");
-    CommandBind bind = new CommandBind();
-    jcommander.addCommand("bind", bind);
-    CommandCreate create = new CommandCreate();
-    jcommander.addCommand("create", create);
-    CommandSetLore setLore = new CommandSetLore();
-    jcommander.addCommand("setlore", setLore);
-
-    this.plugin = plugin;
-  }
 
   @Parameters(commandDescription = "Bind a spell to an item.")
   private class CommandBind {
@@ -80,7 +67,21 @@ public class Commander implements CommandExecutor {
   public String help() {
     StringBuilder help = new StringBuilder();
     jcommander.usage(help);
-    sender.sendMessage(help.toString());
+    return help.toString();
+  }
+
+  public Commander(Plugin plugin) {
+    template = new CommandTemplate();
+    jcommander = new JCommander(template);
+    jcommander.setProgramName("spellcastr");
+    CommandBind bind = new CommandBind();
+    jcommander.addCommand("bind", bind);
+    CommandCreate create = new CommandCreate();
+    jcommander.addCommand("create", create);
+    CommandSetLore setLore = new CommandSetLore();
+    jcommander.addCommand("setlore", setLore);
+
+    this.plugin = plugin;
   }
 
   @Override
@@ -88,9 +89,7 @@ public class Commander implements CommandExecutor {
     try {
       jcommander.parse(args);
     } catch(Exception exception) {
-      StringBuilder help = new StringBuilder();
-      jcommander.usage(help);
-      sender.sendMessage(help.toString());
+      sender.sendMessage(help());
     }
 
     return true;
