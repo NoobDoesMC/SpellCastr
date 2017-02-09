@@ -73,6 +73,12 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
+  @Parameters(commandDescription = "Display this help message, or specify a subcommand to get help on.")
+  private class CommandHelp {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
   private static class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
@@ -86,13 +92,8 @@ public class Commander implements CommandExecutor {
   private CommandSetOption setOption;
   private CommandCraft craft;
   private CommandSetType setType;
+  private CommandHelp help;
   private CommandTemplate template;
-
-  public String help() {
-    StringBuilder help = new StringBuilder();
-    jcommander.usage(help);
-    return help.toString();
-  }
 
   public Commander(Plugin plugin) {
     template = new CommandTemplate();
@@ -112,6 +113,8 @@ public class Commander implements CommandExecutor {
     jcommander.addCommand("type", setType);
     setOption = new CommandSetOption();
     jcommander.addCommand("option", setOption);
+    help = new CommandHelp();
+    jcommander.addCommand("help", help);
 
     this.plugin = plugin;
   }
@@ -122,6 +125,9 @@ public class Commander implements CommandExecutor {
       jcommander.parse(args);
 
       switch (jcommander.getParsedCommand()) {
+        case "help":
+          sendHelpMessage(sender);
+          break;
         default:
           sender.sendMessage(jcommander.getParsedCommand());
       }
@@ -133,7 +139,9 @@ public class Commander implements CommandExecutor {
 
   public void sendHelpMessage(CommandSender sender) {
     try {
-      sender.sendMessage(help());
+      StringBuilder helpMessage = new StringBuilder();
+      jcommander.usage(helpMessage);
+      sender.sendMessage(helpMessage.toString());
     } catch (Exception exception) {
       plugin.getServer().getLogger().info("Something went wrong sending a help message.");
     }
