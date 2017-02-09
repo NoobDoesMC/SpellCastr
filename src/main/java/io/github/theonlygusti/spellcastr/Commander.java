@@ -68,7 +68,7 @@ public class Commander implements CommandExecutor {
   }
 
   @Parameters(commandDescription = "Specify the crafting recipe that can be used at a crafting table to obtain this item.")
-  private class CommandCrafting {
+  private class CommandCraft {
     @Parameter
     private List<String> parameters = new ArrayList<>();
   }
@@ -79,6 +79,13 @@ public class Commander implements CommandExecutor {
   }
 
   private JCommander jcommander;
+  private CommandBind bind;
+  private CommandCreate create;
+  private CommandSetLore setLore;
+  private CommandSetItem setItem;
+  private CommandSetOption setOption;
+  private CommandCraft craft;
+  private CommandSetType setType;
   private CommandTemplate template;
 
   public String help() {
@@ -91,19 +98,19 @@ public class Commander implements CommandExecutor {
     template = new CommandTemplate();
     jcommander = new JCommander(template);
     jcommander.setProgramName("spellcastr");
-    CommandBind bind = new CommandBind();
+    Bind bind = new CommandBind();
     jcommander.addCommand("bind", bind);
-    CommandCreate create = new CommandCreate();
+    create = new CommandCreate();
     jcommander.addCommand("create", create);
-    CommandSetLore setLore = new CommandSetLore();
+    setLore = new CommandSetLore();
     jcommander.addCommand("setlore", setLore);
-    CommandSetItem setItem = new CommandSetItem();
+    setItem = new CommandSetItem();
     jcommander.addCommand("setitem", setItem);
-    CommandCrafting crafting = new CommandCrafting();
-    jcommander.addCommand("crafting", crafting);
-    CommandSetType setType = new CommandSetType();
+    craft = new CommandCraft();
+    jcommander.addCommand("craft", craft);
+    setType = new CommandSetType();
     jcommander.addCommand("settype", setType);
-    CommandSetOption setOption = new CommandSetOption();
+    setOption = new CommandSetOption();
     jcommander.addCommand("setoption", setOption);
 
     this.plugin = plugin;
@@ -115,6 +122,11 @@ public class Commander implements CommandExecutor {
       jcommander.parse(args);
     } catch(Exception exception) {
       sender.sendMessage(help());
+    }
+
+    switch (jcommander.getParsedCommand()) {
+      default:
+        sender.sendMessage(jcommander.getParsedCommand());
     }
 
     return true;
