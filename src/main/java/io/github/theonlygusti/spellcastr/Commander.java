@@ -103,15 +103,15 @@ public class Commander implements CommandExecutor {
     create = new CommandCreate();
     jcommander.addCommand("create", create);
     setLore = new CommandSetLore();
-    jcommander.addCommand("setlore", setLore);
+    jcommander.addCommand("lore", setLore);
     setItem = new CommandSetItem();
-    jcommander.addCommand("setitem", setItem);
+    jcommander.addCommand("item", setItem);
     craft = new CommandCraft();
     jcommander.addCommand("craft", craft);
     setType = new CommandSetType();
-    jcommander.addCommand("settype", setType);
+    jcommander.addCommand("type", setType);
     setOption = new CommandSetOption();
-    jcommander.addCommand("setoption", setOption);
+    jcommander.addCommand("option", setOption);
 
     this.plugin = plugin;
   }
