@@ -120,15 +120,14 @@ public class Commander implements CommandExecutor {
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     try {
       jcommander.parse(args);
+
+      switch (jcommander.getParsedCommand()) {
+        default:
+          sender.sendMessage(jcommander.getParsedCommand());
+      }
     } catch(Exception exception) {
       return false;
     }
-
-    switch (jcommander.getParsedCommand()) {
-      default:
-        sender.sendMessage(jcommander.getParsedCommand());
-    }
-
     return true;
   }
 
