@@ -98,7 +98,7 @@ public class Commander implements CommandExecutor {
     template = new CommandTemplate();
     jcommander = new JCommander(template);
     jcommander.setProgramName("spellcastr");
-    Bind bind = new CommandBind();
+    bind = new CommandBind();
     jcommander.addCommand("bind", bind);
     create = new CommandCreate();
     jcommander.addCommand("create", create);
