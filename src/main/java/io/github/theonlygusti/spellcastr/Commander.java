@@ -125,9 +125,10 @@ public class Commander implements CommandExecutor {
       jcommander.parse(args);
 
       switch (jcommander.getParsedCommand()) {
+        case "create":
+          return createNewSpellOrItem(create.parameters);
         case "help":
-          sendHelpMessage(sender);
-          break;
+          return sendHelpMessage(sender);
         default:
           sender.sendMessage(jcommander.getParsedCommand());
       }
@@ -137,13 +138,19 @@ public class Commander implements CommandExecutor {
     return true;
   }
 
-  public void sendHelpMessage(CommandSender sender) {
+  public boolean sendHelpMessage(CommandSender sender) {
     try {
       StringBuilder helpMessage = new StringBuilder();
       jcommander.usage(helpMessage);
       sender.sendMessage(helpMessage.toString());
+      return true;
     } catch (Exception exception) {
       plugin.getServer().getLogger().info("Something went wrong sending a help message.");
+      return false;
     }
+  }
+
+  public boolean createNewSpellOrItem(List<String> parameters) {
+    return true;
   }
 }
