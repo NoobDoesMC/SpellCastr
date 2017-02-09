@@ -49,6 +49,30 @@ public class Commander implements CommandExecutor {
     private List<String> parameters = new ArrayList<>();
   }
 
+  @Parameters(commandDescription = "Set the spell's type.")
+  private class CommandSetType {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
+  @Parameters(commandDescription = "Set the spell's type.")
+  private class CommandSetOption {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
+  @Parameters(commandDescription = "Specify the vanilla item that this item is represented by.")
+  private class CommandSetItem {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
+  @Parameters(commandDescription = "Specify the crafting recipe that can be used at a crafting table to obtain this item.")
+  private class CommandCrafting {
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
+  }
+
   private static class CommandTemplate {
     @Parameter
     private List<String> parameters = new ArrayList<>();
@@ -73,6 +97,14 @@ public class Commander implements CommandExecutor {
     jcommander.addCommand("create", create);
     CommandSetLore setLore = new CommandSetLore();
     jcommander.addCommand("setlore", setLore);
+    CommandSetItem setItem = new CommandSetItem();
+    jcommander.addCommand("setitem", setItem);
+    CommandCrafting crafting = new CommandCrafting();
+    jcommander.addCommand("crafting", crafting);
+    CommandSetType setType = new CommandSetType();
+    jcommander.addCommand("settype", setType);
+    CommandSetOption setOption = new CommandSetOption();
+    jcommander.addCommand("setoption", setOption);
 
     this.plugin = plugin;
   }
