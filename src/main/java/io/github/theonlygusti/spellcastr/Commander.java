@@ -121,7 +121,7 @@ public class Commander implements CommandExecutor {
     try {
       jcommander.parse(args);
     } catch(Exception exception) {
-      sender.sendMessage(help());
+      return false;
     }
 
     switch (jcommander.getParsedCommand()) {
@@ -130,5 +130,13 @@ public class Commander implements CommandExecutor {
     }
 
     return true;
+  }
+
+  public void sendHelpMessage(CommandSender sender) {
+    try {
+      sender.sendMessage(help());
+    } catch (Exception exception) {
+      plugin.getServer().getLogger().info("Something went wrong sending a help message.");
+    }
   }
 }
