@@ -7,5 +7,5 @@ commands:
   spellcastr:
     description: Top-level command for interacting with the SpellCastr plugin.
     permission: SpellCastr.spellcastr
-    usage: /<command> help
+    usage: /<command> <help|create|bind|setitem|setoption|settype|craft> ...
     aliases: [sc, scr]
