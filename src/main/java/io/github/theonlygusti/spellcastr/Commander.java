@@ -151,7 +151,7 @@ public class Commander implements CommandExecutor {
   }
 
   public boolean createNewSpellOrItem(CommandSender sender, CommandCreate options) {
-    if (parameters.size() < 2) {
+    if (options.parameters.size() < 2) {
       return sendHelpMessage(sender, "create");
     }
     return false;
